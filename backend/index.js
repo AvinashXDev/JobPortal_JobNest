@@ -46,10 +46,10 @@ app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
 // Serve frontend (if you're bundling React with backend)
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
-app.get("*", (_, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-});
+// app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// app.get("*", (_, res) => {
+//   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+// });
 
 // Start server
 const PORT = process.env.PORT || 3000;
