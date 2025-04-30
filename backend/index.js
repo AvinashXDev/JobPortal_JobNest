@@ -19,13 +19,25 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+const whitelist = [
+  'https://jobnest-blush.vercel.app',
+  'http://localhost:5173',
+  'https://admin.yourdomain.com'
+];
+
 
 const corsOptions = {
-  origin: 'https://jobnest-blush.vercel.app',
-  credentials: true,
+  origin: function (origin, callback) {
+    if (!origin || whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 };
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); 
 
 // API routes
 app.use("/api/v1/user", userRoute);
