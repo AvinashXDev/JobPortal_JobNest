@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const whitelist = [
   'https://jobnest-blush.vercel.app',
-  'http://localhost:5173',
-  'https://admin.yourdomain.com'
+  'http://localhost:5173'
+
 ];
 
 
